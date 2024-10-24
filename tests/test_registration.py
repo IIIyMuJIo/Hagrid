@@ -17,7 +17,7 @@ class TestRegistration(BaseTest):
         # Отправляем форму
         self.registration_page.submit_registration()
 
-        # Проверяем, что регистрация успешна
+        # Проверяем, что регистрация успешна пройдена
         success_message = self.registration_page.get_success_message()
         assert "Регистрация прошла успешно" in success_message, "Регистрация не прошла успешно"
 

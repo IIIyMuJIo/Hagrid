@@ -8,6 +8,7 @@ class BaseTest:
     base_page: BasePage
     registration_page: RegistrationPage
 
+    #Fixture
     @pytest.fixture(autouse=True)
     def setup(self, request, driver):
         request.cls.driver = driver

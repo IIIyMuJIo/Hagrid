@@ -3,7 +3,7 @@ from base.base_page import BasePage
 
 
 class RegistrationPage(BasePage):
-    # Локаторы
+    # Локаторы страницы
     PAGE_URL = "https://www.example.com/registration"
     USERNAME_INPUT = (By.XPATH, "//input[@name='username']")
     EMAIL_INPUT = (By.XPATH, "//input[@name='email']")

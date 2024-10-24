@@ -23,4 +23,4 @@ class TestRegistration(BaseTest):
 
         # Проверяем, что появилось сообщение о подтверждении email
         email_confirmation_message = self.registration_page.get_email_confirmation_message()
-        assert "Ваш код для подтверждения" in email_confirmation_message, "Сообщение о подтверждении email не отображается"
+        assert "Ваш код для подтверждения email почты" in email_confirmation_message, "Сообщение о подтверждении email не отображается"

@@ -1,38 +1,26 @@
-from selenium import webdriver
-from pages.registration_page import RegistrationPage
+from base.base_test import BaseTest
 
 
-class TestRegistration():
-
-    def setUp(self):
-        # Инициализация драйвера (Chrome)
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
+class TestRegistration(BaseTest):
 
     def test_registration_success(self):
-        # Создаем объект RegistrationPage
-        registration_page = RegistrationPage(self.driver)
 
         # Переходим на страницу регистрации
-        registration_page.get_url("https://example.com/register")
+        self.registration_page.get_url(self.registration_page.PAGE_URL)
 
         # Заполняем форму
-        registration_page.fill_username("testuser")
-        registration_page.fill_email("testuser@example.com")
-        registration_page.fill_password("TestPassword123")
-        registration_page.fill_confirm_password("TestPassword123")
+        self.registration_page.fill_username("testuser")
+        self.registration_page.fill_email("testuser@example.com")
+        self.registration_page.fill_password("TestPassword123")
+        self.registration_page.fill_confirm_password("TestPassword123")
 
         # Отправляем форму
-        registration_page.submit_registration()
+        self.registration_page.submit_registration()
 
         # Проверяем, что регистрация успешна
-        success_message = registration_page.get_success_message()
-        self.assertIn("Регистрация прошла успешно", success_message)
+        success_message = self.registration_page.get_success_message()
+        assert "Регистрация прошла успешно" in success_message, "Регистрация не прошла успешно"
 
         # Проверяем, что появилось сообщение о подтверждении email
-        email_confirmation_message = registration_page.get_email_confirmation_message()
-        self.assertIn("Подтвердите ваш email", email_confirmation_message)
-
-    def tearDown(self):
-        # Закрываем браузер после теста
-        self.driver.quit()
+        email_confirmation_message = self.registration_page.get_email_confirmation_message()
+        assert "Код для подтверждения" in email_confirmation_message, "Сообщение о подтверждении email не отображается"

@@ -4,13 +4,14 @@ from base.base_page import BasePage
 
 class RegistrationPage(BasePage):
     # Locators
-    USERNAME_INPUT = (By.XPATH, "username")
-    EMAIL_INPUT = (By.XPATH, "email")
-    PASSWORD_INPUT = (By.XPATH, "password")
-    CONFIRM_PASSWORD_INPUT = (By.XPATH, "confirm_password")
-    SUBMIT_BUTTON = (By.XPATH, "button[type='submit']")
-    SUCCESS_MESSAGE = (By.XPATH, ".success-message")
-    EMAIL_CONFIRMATION_MESSAGE = (By.XPATH, ".email-confirmation")
+    PAGE_URL = "https://www.example.com/registration"
+    USERNAME_INPUT = (By.XPATH, "//input[@name='username']")
+    EMAIL_INPUT = (By.XPATH, "//input[@name='email']")
+    PASSWORD_INPUT = (By.XPATH, "//input[@name='password']")
+    CONFIRM_PASSWORD_INPUT = (By.XPATH, "//input[@name='confirm_password']")
+    SUBMIT_BUTTON = (By.XPATH, "//button[@type='submit']")
+    SUCCESS_MESSAGE = (By.XPATH, "//div[contains(@class, 'success-message')]")
+    EMAIL_CONFIRMATION_MESSAGE = (By.XPATH, "//div[contains(@class, 'email-confirmation')]")
 
     def fill_username(self, username):
         self.find_element(*self.USERNAME_INPUT).send_keys(username)
